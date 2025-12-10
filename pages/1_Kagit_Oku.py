@@ -42,7 +42,7 @@ if image_data:
     if st.button("✨ Kağıdı Oku ve Kaydet", type="primary"):
         with st.spinner("Yapay zeka kağıdı inceliyor..."):
             try:
-                model = genai.GenerativeModel("gemini-1.5-flash")
+                model = genai.GenerativeModel("gemini-2.5-flash")
                 
                 prompt = """
                 Bu sınav kağıdını oku.
