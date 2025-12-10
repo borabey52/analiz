@@ -1,4 +1,21 @@
 import streamlit as st
+import google.generativeai as genai
+import pandas as pd
+import json
+
+# --- 1. AYARLAR VE GÜVENLİK ---
+st.set_page_config(page_title="AI Sınav Okuma", layout="wide")
+
+# API Anahtarını Streamlit'in güvenli kasasından (secrets) çekiyoruz
+if "GOOGLE_API_KEY" in st.secrets:
+    SABIT_API_KEY = st.secrets["GOOGLE_API_KEY"]
+else:
+    # Eğer anahtar yoksa boş bırakalım, aşağıda uyarı veririz
+    SABIT_API_KEY = ""
+
+# Gemini'yi yapılandır (Eğer anahtar varsa)
+if SABIT_API_KEY:
+    genai.configure(api_key=SABIT_API_KEY)
 
 st.set_page_config(page_title="Sınav Asistanı Ana Sayfa", layout="wide")
 
