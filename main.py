@@ -7,17 +7,15 @@ import json
 st.set_page_config(page_title="AI Sınav Okuma", layout="wide")
 
 # API Anahtarını Streamlit'in güvenli kasasından (secrets) çekiyoruz
+# Eğer kasa boşsa veya anahtar yoksa hata vermesin diye boş tanımlıyoruz
 if "GOOGLE_API_KEY" in st.secrets:
     SABIT_API_KEY = st.secrets["GOOGLE_API_KEY"]
 else:
-    # Eğer anahtar yoksa boş bırakalım, aşağıda uyarı veririz
     SABIT_API_KEY = ""
 
-# Gemini'yi yapılandır (Eğer anahtar varsa)
+# Gemini'yi yapılandır (Eğer anahtar doluysa)
 if SABIT_API_KEY:
     genai.configure(api_key=SABIT_API_KEY)
-
-st.set_page_config(page_title="Sınav Asistanı Ana Sayfa", layout="wide")
 
 st.title("🏫 AI Sınav Okuma Sistemi")
 st.info("Soldaki menüden işlem seçebilirsiniz.")
